@@ -1,0 +1,40 @@
+data:
+  patch_size: 256
+  patches_per_source: 16
+
+model:
+  provider: timm
+  backbone_id: vit_large_patch16_dinov3.lvd1689m
+  local_files_only: true
+  dropout: 0.10
+  decoder_channels: 32
+
+train:
+  seed: 170831
+  epochs: 1
+  samples_per_epoch: 4096
+  evaluation_samples: 1024
+  positive_probability: 0.5
+  batch_size: 64
+  workers: 16
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  use_amp: true
+
+loss:
+  auxiliary_weight: 0.25
+  mask_bce_weight: 1.0
+  mask_dice_weight: 1.0
+  max_positive_weight: 64.0
+
+evaluation:
+  mask_threshold: 0.5
+  visualization_panels: 12
+  baseline_logit_max_abs_drift: 0.00001
+  minimum_pixel_dice: 0.02
+  minimum_localization_hit_rate: 0.50
+  maximum_normal_predicted_area_p95: 0.25
+
+inputs:
+  expected_manifest_sha256: cdd2e3edceae7424f230375573398b31325f24bfffd2f1df0545a03a729aaac4
+  expected_base_checkpoint_sha256: 6db93522444871c1ff2cf021e341a46bc855681465f8e71b60bb89eaf1f9c3ab

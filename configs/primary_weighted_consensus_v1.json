@@ -1,0 +1,43 @@
+{
+  "candidate_id": "primary_weighted_consensus_v1",
+  "interpretation": "development_set_selected_diagnostic_not_sealed_test",
+  "selection_provenance": "formula_selected_from_the_same_115_image_development_cohort_after_auxiliary_max_v1_rejection",
+  "formula": "cuberoot(square(p_map)_times_auxiliary_map)",
+  "inputs": {
+    "source_receipt_sha256": "dea8f8f8294cd7ac2bf129c47e7bc718a7c1dc46504c5da287d1bbe489863e7c",
+    "normal_peak_receipt_sha256": "9b2b8dc202cdcd6e6c6acc1640882d02ec4d5cd260bbbf094df17dd13b138f6d",
+    "auxiliary_max_receipt_sha256": "fd0d4063d8af69a9c7ceb476a2c07e9bbe3cf37538285006d92adaf5e53ec846",
+    "source_results_count": 115,
+    "ok_count": 27,
+    "ng_count": 88,
+    "localized_ng_count": 80,
+    "white_spot_count": 12
+  },
+  "evaluation": {
+    "decision_threshold": 0.5,
+    "decision_comparator": "strictly_greater_than",
+    "parameter_sweeps_allowed": 0,
+    "localized_ng_required_hits": 80,
+    "white_spot_required_hits": 12,
+    "minimum_p_ground_truth_positive_pixel_preservation_fraction": 0.95,
+    "minimum_ok_positive_pixel_reduction_fraction_vs_raw": 0.25,
+    "all_ok_subgroups_must_reduce": true
+  },
+  "structure_cohort": {
+    "description": "PRODUCT_B three-hole circular base/plate development cohort",
+    "groups": {
+      "a": "ok_0001..ok_0008",
+      "b": "ok_0009..ok_0016",
+      "c": "ok_0017..ok_0024",
+      "extra": "ok_0025..ok_0027"
+    },
+    "metadata_label": "visual_review_only_not_authoritative_bottom_label"
+  },
+  "runtime_code_sha256": {
+    "dual_evidence_rescue_eval.py": "af4d044f4ae66055bb63b70909ebc636f69750c4480473d0fa05ef29d6889163",
+    "dual_evidence_rescue.py": "4846958bb0b453c1d6ae22ed78a5ecb65f1ea58bcd60c71c7034cb96d79ea414",
+    "actual_multitask_eval.py": "5e564ac0a03150c3a3cd4552183744166eb3e6bb9af827b7649318afd76f05dd",
+    "actual_multitask_inference.py": "a4705a649b15b1b4e085dc76a4b6a123b1f6070c9fc5d42ee7476378c3c41158",
+    "normal_peak_spike.py": "1ad6607a6347d4305d0541039688e6fc6794381997e9223b17d0c5a30d1cc0cb"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "candidate_id": "normal_reference_relative_peak_v1",
+  "interpretation": "development_diagnostic_not_sealed_test",
+  "inputs": {
+    "source_a_receipt_sha256": "dea8f8f8294cd7ac2bf129c47e7bc718a7c1dc46504c5da287d1bbe489863e7c",
+    "selected_plan_sha256": "0f908d9ae7fa902fe25ba866a28d0a90de611fba5c259558ba15a8cfc9154e3b",
+    "reference_shard_receipt_sha256": [
+      "3c9663f2acbf872115787a638aa510a330e4d191f8403a50f8bb820ca2e9295f",
+      "f874bd1f5634648e3a7846b31eb7a1e3a3c361f48c7a5369bb4f46a384d93cd1"
+    ]
+  },
+  "registration": {
+    "compact_width": 512,
+    "height_rule": "round(reference_map_height*compact_width/reference_map_width)",
+    "method": "sobel_phase_then_sift_similarity_ransac",
+    "all_three_required": true
+  },
+  "recurrence": {
+    "reference_score_threshold": 0.5,
+    "required_fraction": 0.6666666666666666,
+    "dilation_radius_compact_px": 1,
+    "suppression_strength": 0.5
+  },
+  "peak_preservation": {
+    "query_score_source": "sealed_a_raw_score_map_8bit",
+    "reference_score_ceiling": "pixelwise_maximum_of_three_aligned_continuous_reference_score_maps",
+    "regional_maximum_radius_compact_px": 1,
+    "regional_maximum_kernel": "ellipse",
+    "reference_comparison": "query_score_strictly_greater_than_dilated_reference_ceiling",
+    "preserve_mask_expansion_radius_compact_px": 0,
+    "upsampling": "nearest_neighbor"
+  },
+  "evaluation": {
+    "decision_threshold": 0.5,
+    "parameter_sweeps_allowed": 0,
+    "localized_ng_required_no_loss_vs_a": true,
+    "minimum_ok_positive_pixel_reduction_fraction_vs_a": 0.1,
+    "white_spot_reported_separately": true,
+    "unlabeled_ng_reported_separately": true
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "candidate_id": "normal_reference_relative_peak_v2",
+  "interpretation": "development_diagnostic_not_sealed_test",
+  "correction_from_v1": {
+    "reason": "pre_evaluation_method_audit",
+    "changes": [
+      "reference_inference_stride_256_to_128_to_match_source_a",
+      "decision_and_visualization_comparator_both_strictly_greater_than",
+      "metrics_are_computed_from_the_same_quantized_maps_that_are_delivered"
+    ],
+    "ng_outcomes_used_for_parameter_tuning": false
+  },
+  "runtime_code_sha256": {
+    "normal_peak_spike.py": "1ad6607a6347d4305d0541039688e6fc6794381997e9223b17d0c5a30d1cc0cb",
+    "normal_prior_postprocess.py": "42074887a314350a4c2bf7ac7968daeced06438e1a5760c3609bd24c0adfe772",
+    "normal_prior_spike.py": "65a744d5183fcdb5addd06b24fd9b8cf311e9813645ee5e3cd022dc9c804e1d1",
+    "actual_multitask_eval.py": "5e564ac0a03150c3a3cd4552183744166eb3e6bb9af827b7649318afd76f05dd",
+    "actual_multitask_inference.py": "a4705a649b15b1b4e085dc76a4b6a123b1f6070c9fc5d42ee7476378c3c41158"
+  },
+  "inputs": {
+    "source_a_receipt_sha256": "dea8f8f8294cd7ac2bf129c47e7bc718a7c1dc46504c5da287d1bbe489863e7c",
+    "selected_plan_sha256": "0f908d9ae7fa902fe25ba866a28d0a90de611fba5c259558ba15a8cfc9154e3b",
+    "reference_shard_receipt_sha256": [
+      "c9f840cc01f3036267fd7165da61299ea37e9a0e595636f03c9e865fb2451199",
+      "66e3f5c3341c15cd5d95494b21ee2083a68041dc3b3262395f7ed53ef82a0d7c"
+    ]
+  },
+  "inference_contract": {
+    "aggregation": "uniform_mean",
+    "batch_size": 128,
+    "patch_size": 256,
+    "stride": 128,
+    "base_checkpoint_sha256": "6db93522444871c1ff2cf021e341a46bc855681465f8e71b60bb89eaf1f9c3ab",
+    "multitask_checkpoint_sha256": "077c95591c01cf67d6126c7c28e85b0615d5ac55d2a340d1855707d053a9cde2",
+    "training_receipt_sha256": "4bc178df717a7be2d0c7cb64b52210798ed30bcf76819c670412c566a7b95f86",
+    "backbone_id": "vit_large_patch16_dinov3.lvd1689m",
+    "config_digest": "b7e5fa26152b4be9d66cf975f9486350f890aa9e9c6a2c839d214a0e4927ed3c"
+  },
+  "reference_generation": {
+    "map_width": 1024,
+    "mask_threshold": 0.5,
+    "use_amp": true,
+    "code_sha256": {
+      "normal_prior_reference.py": "0441ca8b68d8cfed7abba26f8ddd1fde8c428f58e7777e571d98602f2bbd82c9",
+      "normal_prior_spike.py": "65a744d5183fcdb5addd06b24fd9b8cf311e9813645ee5e3cd022dc9c804e1d1",
+      "actual_multitask_inference.py": "a4705a649b15b1b4e085dc76a4b6a123b1f6070c9fc5d42ee7476378c3c41158",
+      "model.py": "1e7938634ee96ab1bd8cc4ccb2d5e8548aaaf4c5b83efb512deb41f1e1cb0ed6",
+      "train_multitask.py": "d02d217cf50fe310dca6937945b5cc2150e735af3bbf9862e8dc4be4e20a1af2",
+      "refinement_contract.py": "3dae23beb6942d02bd56c82f735fb305495dfdcbe2bd05a2211b2b4006d716e3"
+    }
+  },
+  "registration": {
+    "compact_width": 512,
+    "height_rule": "round(reference_map_height*compact_width/reference_map_width)",
+    "method": "sobel_phase_then_sift_similarity_ransac",
+    "all_three_required": true,
+    "max_translation_compact_px": 8,
+    "min_phase_response": 0.15,
+    "min_overlap_fraction": 0.95,
+    "sift_max_features": 800,
+    "sift_contrast_threshold": 0.01,
+    "feature_ratio_test": 0.72,
+    "min_feature_good_matches": 8,
+    "min_feature_inliers": 6,
+    "min_feature_inlier_ratio": 0.25,
+    "feature_scale_range": [0.8, 1.2],
+    "min_feature_overlap_fraction": 0.6,
+    "ransac_reprojection_threshold": 3.0,
+    "ransac_max_iters": 5000,
+    "ransac_confidence": 0.999
+  },
+  "recurrence": {
+    "reference_score_threshold": 0.5,
+    "required_fraction": 0.6666666666666666,
+    "dilation_radius_compact_px": 1,
+    "suppression_strength": 0.5
+  },
+  "peak_preservation": {
+    "query_score_source": "sealed_a_raw_score_map_8bit",
+    "reference_score_ceiling": "pixelwise_maximum_of_three_aligned_continuous_reference_score_maps",
+    "regional_maximum_radius_compact_px": 1,
+    "regional_maximum_kernel": "ellipse",
+    "reference_comparison": "query_score_strictly_greater_than_dilated_reference_ceiling",
+    "preserve_mask_expansion_radius_compact_px": 0,
+    "upsampling": "nearest_neighbor"
+  },
+  "delivery": {
+    "map_encoding": "round_probability_times_255_to_uint8_png",
+    "metrics_input": "decoded_delivered_uint8_map",
+    "comparison_layout": "native_original_left_candidate_overlay_right",
+    "comparison_size": [5464, 16384],
+    "overlay_alpha": 0.55
+  },
+  "evaluation": {
+    "decision_threshold": 0.5,
+    "decision_comparator": "strictly_greater_than",
+    "visualization_comparator": "strictly_greater_than",
+    "parameter_sweeps_allowed": 0,
+    "localized_ng_required_no_loss_vs_a": true,
+    "minimum_ok_positive_pixel_reduction_fraction_vs_a": 0.1,
+    "white_spot_reported_separately": true,
+    "unlabeled_ng_reported_separately": true
+  }
+}

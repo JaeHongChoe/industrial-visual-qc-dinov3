@@ -1,0 +1,29 @@
+data:
+  root: /path/to/dataset/OK
+  start_date: "2026-05-01"
+  patch_size: 256
+  stride: 128
+  patches_per_source: 8
+  extra_condition_names:
+    extra_1: unresolved_extra_1
+    extra_2: unresolved_extra_2
+    extra_3: unresolved_extra_3
+
+model:
+  provider: timm
+  backbone_id: vit_large_patch16_dinov3.lvd1689m
+  local_files_only: true
+  dropout: 0.10
+
+train:
+  seed: 17
+  epochs: 10
+  samples_per_epoch: 20000
+  evaluation_samples: 2000
+  batch_size: 64
+  workers: 8
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+
+calibration:
+  target_patch_fpr: 0.001

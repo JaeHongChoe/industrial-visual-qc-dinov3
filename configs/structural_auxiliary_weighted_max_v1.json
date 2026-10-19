@@ -1,0 +1,73 @@
+{
+  "candidate_id": "auxiliary_weighted_max_v1",
+  "interpretation": "development_diagnostic_not_sealed_test",
+  "formula": "max_over_overlaps(mask_probability_times_auxiliary_probability)",
+  "inputs": {
+    "source_receipt_sha256": "dea8f8f8294cd7ac2bf129c47e7bc718a7c1dc46504c5da287d1bbe489863e7c",
+    "source_results_count": 115,
+    "ok_count": 27,
+    "ng_count": 88,
+    "localized_ng_count": 80,
+    "base_checkpoint_sha256": "6db93522444871c1ff2cf021e341a46bc855681465f8e71b60bb89eaf1f9c3ab",
+    "multitask_checkpoint_sha256": "077c95591c01cf67d6126c7c28e85b0615d5ac55d2a340d1855707d053a9cde2",
+    "training_receipt_sha256": "4bc178df717a7be2d0c7cb64b52210798ed30bcf76819c670412c566a7b95f86"
+  },
+  "inference": {
+    "patch_size": 256,
+    "stride": 128,
+    "batch_size": 128,
+    "amp": true
+  },
+  "evaluation": {
+    "decision_threshold": 0.5,
+    "decision_comparator": "strictly_greater_than",
+    "visualization_comparator": "strictly_greater_than",
+    "parameter_sweeps_allowed": 0,
+    "localized_ng_required_no_loss_vs_raw": true,
+    "minimum_ok_positive_pixel_reduction_fraction_vs_raw": 0.1
+  },
+  "structure_cohort": {
+    "description": "PRODUCT_B three-hole circular base/plate development cohort",
+    "ok_ids": [
+      "ok_0001",
+      "ok_0002",
+      "ok_0003",
+      "ok_0004",
+      "ok_0005",
+      "ok_0006",
+      "ok_0007",
+      "ok_0008",
+      "ok_0009",
+      "ok_0010",
+      "ok_0011",
+      "ok_0012",
+      "ok_0013",
+      "ok_0014",
+      "ok_0015",
+      "ok_0016",
+      "ok_0017",
+      "ok_0018",
+      "ok_0019",
+      "ok_0020",
+      "ok_0021",
+      "ok_0022",
+      "ok_0023",
+      "ok_0024",
+      "ok_0025",
+      "ok_0026",
+      "ok_0027"
+    ],
+    "metadata_label": "visual_review_only_not_authoritative_bottom_label"
+  },
+  "runtime_code_sha256": {
+    "structural_suppression_eval.py": "c0e0ee7a2c4cd58fb80a79d28f2af156f7cfb39e02b50f8022e43b1ca10fdf68",
+    "structural_suppression_spike.py": "c07272e66e93888ae21206eb1423c52f0260ce29252fcb70c40c23ad55db1304",
+    "actual_multitask_eval.py": "5e564ac0a03150c3a3cd4552183744166eb3e6bb9af827b7649318afd76f05dd",
+    "actual_multitask_inference.py": "a4705a649b15b1b4e085dc76a4b6a123b1f6070c9fc5d42ee7476378c3c41158",
+    "inference.py": "73cd322f8ede471934d3b926875d24c2033d16f42433258624afc9435118719d",
+    "model.py": "1e7938634ee96ab1bd8cc4ccb2d5e8548aaaf4c5b83efb512deb41f1e1cb0ed6",
+    "normal_peak_spike.py": "1ad6607a6347d4305d0541039688e6fc6794381997e9223b17d0c5a30d1cc0cb",
+    "refinement_contract.py": "3dae23beb6942d02bd56c82f735fb305495dfdcbe2bd05a2211b2b4006d716e3",
+    "train_multitask.py": "d02d217cf50fe310dca6937945b5cc2150e735af3bbf9862e8dc4be4e20a1af2"
+  }
+}

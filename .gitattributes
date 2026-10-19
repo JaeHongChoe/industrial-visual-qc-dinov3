@@ -1,0 +1,2 @@
+src/patch_qc/normal_prior_reference.py whitespace=-blank-at-eof
+tests/test_normal_prior_reference.py whitespace=-blank-at-eof

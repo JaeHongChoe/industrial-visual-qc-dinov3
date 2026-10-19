@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "patch-qc-poc"
+version = "0.1.0"
+description = "Native-patch binary DINOv3 PoC for Visual QC"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "opencv-python-headless>=4.9",
+  "Pillow>=10.0",
+  "PyYAML>=6.0",
+  "timm>=1.0.24",
+  "torch>=2.3",
+  "transformers>=4.56",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+patch-qc = "patch_qc.cli:main"
+patch-qc-train = "patch_qc.train_probe:main"
+patch-qc-train-multitask = "patch_qc.train_multitask:main"
+patch-qc-eval-actual-multitask = "patch_qc.actual_multitask_eval:main"
+patch-qc-refine = "patch_qc.refinement_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
